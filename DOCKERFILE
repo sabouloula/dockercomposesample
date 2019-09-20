@@ -1,0 +1,14 @@
+# commandes pour générer un fichier requirements.txt à intégrer dans le dockerfile
+# pip install pipreqs
+# pipreqs projectReptile-master
+# WORKDIR /opt/app
+# RUN pip install -r requirements.txt
+# COPY . /opt/app
+FROM python:alpine
+COPY . /app
+WORKDIR /app
+ENV DB_HOST '192.168.56.101'
+ENV LC_ALL C.UTF-8
+ENV LANG C.UTF-8
+RUN pip install -r requirements.txt
+CMD [ "python","app.py" ]
